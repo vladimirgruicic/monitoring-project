@@ -3,7 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: rgba(55, 0, 255, 0.103);
+    background-color: rgba(0, 255, 34, 0.658);
 }
 
 .container {
@@ -11,6 +11,19 @@ body {
 }
 
 .title {
-    font-size: 48px;
+    font-size: 90px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+}
+
+.background-image {
+    background-image: url("/static/images/image.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.frame-for-title {
+    text-align: center;
+    background-color: aquamarine;
 }

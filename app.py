@@ -19,16 +19,22 @@ def collect_metrics():
     memory_usage = psutil.virtual_memory().percent
     disk_usage = psutil.disk_usage('/').percent
 
+    metrics= {
+        'cpu_usage' : cpu_usage,
+        'memory_usage' : memory_usage,
+        'disk_usage' : disk_usage
+    }
+
     #Store metrics in database.
     conn = sqlite3.connect('data/metrics.db')
     cursor = conn.cursor()
     cursor.execute("INSERT INTO metrics (cpu_usage, memory_usage, disk_usage) VALUES (?, ?, ?)",
-                   (cpu_usage, memory_usage, disk_usage))
+                   (metrics['cpu_usage'], metrics['memory_usage'], metrics['disk_usage']))
     
     conn.commit()
     conn.close()
 
-    return "Metrics collected and stored in database sucessfully!"
+    return metrics
 
 
 # Route for serving static files
