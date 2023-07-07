@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Metrics
+        </title>
+        <link rel="stylesheet" type="text/css" href="/static/css/collect_metrics.css">
+    </head>
+    <body>
+        <h1>
+            Metrics
+        </h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Metric
+                    </th>
+                    <th>
+                        Value
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        CPU Usage
+                    </td>
+                    <td>
+                        {{ cpu_usage }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Memory Usage
+                    </td>
+                    <td>
+                        {{ memory_usage }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Disk Usage
+                    </td>
+                    <td>
+                        {{ disk_usage }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

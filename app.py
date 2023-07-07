@@ -1,8 +1,16 @@
-from bottle import Bottle, run, template, static_file
+from bottle import Bottle, run, template, static_file, HTTPError
 import psutil
 import sqlite3
 
 app = Bottle()
+
+app.error(404)
+def error_404(error):
+    return "404 Not Found!"
+
+app.error(500)
+def error_500(error):
+    return "500 Not Found!"
 
 @app.route('/')
 def home():
@@ -34,7 +42,7 @@ def collect_metrics():
     conn.commit()
     conn.close()
 
-    return metrics
+    return template('views/collect_metrics.html', cpu_usage=cpu_usage, memory_usage=memory_usage, disk_usage=disk_usage, metrics=metrics)
 
 
 # Route for serving static files
@@ -43,4 +51,7 @@ def serve_static(filepath):
     return static_file(filepath, root='./static')
 
 if __name__ == '__main__':
-    run (app, host='localhost', port=8080, debug=True)
+    try:
+        run (app, host='localhost', port=8080, debug=True)
+    finally:
+        app.close()
